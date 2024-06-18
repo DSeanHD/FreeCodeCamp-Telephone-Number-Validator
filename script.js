@@ -15,9 +15,11 @@ function checkNumber() {
 
   if (regex.test(userInput.value)) {
     item.innerHTML = "Valid US number: " + userInput.value;
+    item.classList.add("valid");
     userInput.value = "";
   } else {
     item.innerHTML = "Invalid US number: " + userInput.value;
+    item.classList.add("invalid");
     userInput.value = "";
   }
 }
@@ -26,4 +28,10 @@ checkBtn.addEventListener("click", checkNumber);
 
 clearBtn.addEventListener("click", () => {
   resultsDiv.innerHTML = "";
+})
+
+userInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    checkNumber();
+  }
 })
